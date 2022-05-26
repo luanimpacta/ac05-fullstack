@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+</head>
+<body>
+<div class="container">
+    <form class="content" action="/calculator" method="POST">
+        <h1 class="title">Calculadora</h1>
+        <div class="divider"></div>
+        <div class="input-container">
+            <input class="input" placeholder="Numero 1" id="number1" name="number1"/>
+        </div>
+        <div class="input-container">
+            <input class="input" placeholder="Numero 2"  id="number2" name="number2"/>
+        </div>
+        <div class="input-container">
+            <select id="mySelect" class="input" name="operation">
+                <option value="math">Matemática</option>
+                <option value="sub">Subtração</option>
+                <option value="mult">Multiplicação</option>
+                <option value="div">Divisão</option>
+                <option value="power">Potência</option>
+                <option value="square_root">Raiz quadrada</option>
+                <option value="logarithm">Logaritmo com base 10</option>
+            </select>
+        </div>
+        <button class="button" type="submit">Enviar</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function changeSelected() {
+        const x = document.getElementById("mySelect").value;
+
+        if (x === 'square_root' || x === 'logarithm') {
+            document.getElementById("number2").value = '0';
+            document.getElementById("number2").style.display = 'none';
+        } else {
+            document.getElementById("number2").value = '';
+            document.getElementById("number2").style.display = 'block';
+        }
+    };
+
+    changeSelected()
+
+    var select = document.getElementById('mySelect');
+    select.addEventListener('change', changeSelected);
+</script>
+</body>
+</html>
